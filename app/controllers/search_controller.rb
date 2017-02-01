@@ -1,11 +1,13 @@
 class SearchController < ApplicationController
-  def search
+def search
     if params[:term].nil?
       @articles = []
     else
-      @articles = Article.search params[:term]
-    end 
+      term = params[:term]
+      @articles = Article.search term, fields: [:text], highlight:  true
+    end
   end
+
 
   def typeahead
     render json: Article.search(params[:term], {
