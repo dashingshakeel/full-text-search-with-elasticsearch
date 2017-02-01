@@ -1,5 +1,7 @@
 require 'elasticsearch/model'
+require 'searchkick'
 class Article < ApplicationRecord
+  searchkick
   include Elasticsearch::Model 
   include Elasticsearch::Model::Callbacks
 
